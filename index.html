@@ -1,0 +1,32 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventario Hospitalario</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <script>
+   fetch('/navbar')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('navbar').innerHTML = html;
+    })
+    .catch(err => {
+      console.error("Error cargando navbar:", err);
+    });
+  </script>
+
+  <h1>Inventario Hospitalario</h1>
+  <p>Selecciona una opción:</p>
+
+  <div style="margin-top: 20px;">
+    <button onclick="window.location.href='/ver-pacientes'">Ver Pacientes</button>
+    <button onclick="window.location.href='/ver-medicamentos'">Ver Medicamentos</button>
+    <button onclick="window.location.href='/ver-maquinas'">Ver Máquinas</button>
+  </div>
+</body>
+</html>
