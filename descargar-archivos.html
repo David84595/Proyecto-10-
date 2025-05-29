@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Descargar Archivos</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Descargar Archivos Subidos</h1>
+  
+  <!-- Botón para iniciar la descarga -->
+  <a href="/generar-zip" class="btn-descargar">Descargar Todos los Archivos (ZIP)</a>
+  
+  <!-- Lista de archivos (opcional) -->
+  <div id="lista-archivos"></div>
+
+  <script>
+    // Opcional: Cargar lista de archivos dinámicamente
+    fetch('/archivos-subidos')
+      .then(response => response.json())
+      .then(archivos => {
+        const lista = document.getElementById('lista-archivos');
+        lista.innerHTML = '<h3>Archivos Disponibles:</h3><ul>' + 
+          archivos.map(a => `<li>${a.nombre} (${new Date(a.fecha_subida).toLocaleDateString()})</li>`).join('') +
+          '</ul>';
+      });
+  </script>
+</body>
+</html>
